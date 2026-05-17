@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: #1a1a2e;
+    background: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#006400] text-white font-semibold px-6 py-3 rounded-xl
+           hover:bg-[#005000] active:scale-95 transition-all duration-200
+           shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-[#006400] font-semibold px-6 py-3 rounded-xl border-2
+           border-[#006400] hover:bg-[#f0fdf4] active:scale-95 transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white font-semibold px-6 py-3 rounded-xl
+           hover:bg-red-700 active:scale-95 transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-gray-200 font-body
+           focus:border-[#006400] focus:ring-4 focus:ring-[#006400]/10 focus:outline-none
+           transition-all duration-200 bg-white text-gray-800 placeholder-gray-400;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-gray-100;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 mb-1;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 text-sm mb-6;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-green {
+    @apply badge bg-green-100 text-green-800;
+  }
+
+  .badge-yellow {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-red {
+    @apply badge bg-red-100 text-red-800;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: #f1f5f9; }
+::-webkit-scrollbar-thumb  { background: #c4d4c4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #006400; }
+
+/* Step progress bar animation */
+.step-line-progress {
+  transition: width 0.5s ease;
+}
+
+/* Seat map */
+.seat-available  { @apply cursor-pointer bg-green-100 border-2 border-green-400 text-green-700 hover:bg-green-400 hover:text-white transition-all duration-150 rounded-lg; }
+.seat-occupied   { @apply cursor-not-allowed bg-gray-100 border-2 border-gray-300 text-gray-400 rounded-lg; }
+.seat-selected   { @apply cursor-pointer bg-[#006400] border-2 border-[#006400] text-white rounded-lg shadow-md; }
+
+/* Print styles for receipt */
+@media print {
+  .no-print { display: none !important; }
+  body       { background: white; }
+  .receipt-card { box-shadow: none !important; border: 1px solid #ddd !important; }
+}
