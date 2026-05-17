@@ -58,6 +58,12 @@ GRANT ALL PRIVILEGES ON DATABASE busapp_db TO busapp_user;
 -- ─────────────────────────────────────────────────────────
 \c busapp_db
 
+-- Re-assert UTF-8 client encoding: \c reconnects and on Windows
+-- resets client_encoding back to the OS default (WIN1252), which
+-- would mojibake every en-dash that follows.
+\encoding UTF8
+SET client_encoding TO 'UTF8';
+
 -- Grant schema permissions
 GRANT ALL ON SCHEMA public TO busapp_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
